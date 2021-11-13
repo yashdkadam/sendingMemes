@@ -9,7 +9,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title></title>
 </head>
-
 <body>
     <script>
         const api_url = "https://meme-api.herokuapp.com/gimme/50"
@@ -25,21 +24,20 @@
                 if (meme.search(".gif") !== -1) {
                     console.log("gif found");
                     continue
-
                 }
+                
                 const send = await fetch(sendUrl + meme + "&caption=memeNo" + i.toString()).then((d) => d.json());
                 console.log(send, i);
                 await delay(3000);
 
                 let data = "";
-
                 html = `<div class="card m-5" id=${i} style="width: 18rem;">
-        <img src=${meme} class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Title: ${response["memes"][i]["title"]}</h5>
-            <p class="card-text">${send["result"]['caption']}</p>
-        </div>
-    </div>`
+                <img src=${meme} class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Title: ${response["memes"][i]["title"]}</h5>
+                <p class="card-text">${send["result"]['caption']}</p>
+                </div>
+                </div>`
                 data += html;
 
                 test = document.createElement('div');
@@ -47,19 +45,11 @@
                 test.style.cssText = "style: display: block;";
                 document.body.appendChild(test);
             }
-
             const message = await fetch(sendMessage).then((d) => d.json());
             console.log("50 memes send", message);
-            final = document.createElement('h1');
-            final.innerHTML = "<h1>50 memes send</h1>";
-            document.body.appendChild(final);
             location.reload();
         }
-
-
-
         getapi(api_url, 10, 10);
-
         function delay(milisec) {
             return new Promise(async (resolve) => {
                 setTimeout(() => { resolve('') }, milisec);
@@ -67,5 +57,4 @@
         }
     </script>
 </body>
-
 </html>
