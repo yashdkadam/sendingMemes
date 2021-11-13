@@ -24,7 +24,7 @@
 
         async function getapi(url, int, int) {
             try {
-                const response = await fetch(url).then((d) => d.json());
+                var response = await fetch(url).then((d) => d.json());
             }
             catch {
                 location.reload();
