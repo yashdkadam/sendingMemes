@@ -23,7 +23,6 @@
         const sendMessage = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myPanelwork&text=50%20memes%20send";
 
         async function getapi(url, int, int) {
-
             const response = await fetch(url).then((d) => d.json());
 
             console.log(response.count);
@@ -51,7 +50,7 @@
             <img src=${meme} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Title: ${response["memes"][i]["title"]}</h5>
-                <p class="card-text">${send["result"]['caption']}</p>
+                <p class="card-text">memeNo${i}</p>
             </div>
         </div>`
                 data += html;
