@@ -33,7 +33,7 @@
                     continue
 
                 }
-                const send = await fetch(sendUrl + meme + "&caption=memeNo" + i.toString()).then((d) => d.json());
+                var send = await fetch(sendUrl + meme + "&caption=memeNo" + i.toString()).then((d) => d.json());
                 console.log(send, i);
                 await delay(3000);
 
