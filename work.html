@@ -12,9 +12,15 @@
 
 <body>
     <script>
-        const api_url = "https://meme-api.herokuapp.com/gimme/50"
-        const sendUrl = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendPhoto?chat_id=@myPanelwork&photo="
-        const sendMessage = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myPanelwork&text=50%20memes%20send"
+        subreddit = ["BikiniBottomTwitter", "AdviceAnimals", "MemeEconomy",
+            "ComedyCemetery", "memes", "PrequelMemes", "PewdiepieSubmissions",
+            "terriblefacebookmemes", "funny", "wholesomememes", "raimimemes",
+            "historymemes", "okbuddyretard", "im14andthisisdeep", "puns", "nnn",
+            "Community", "Puns", "gaming", "totallynotrobots"];
+        var randomInt = Math.floor(Math.random() * 20);
+        const api_url = "https://meme-api.herokuapp.com/gimme/" + subreddit[randomInt] + "/50";
+        const sendUrl = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendPhoto?chat_id=@myPanelwork&photo=";
+        const sendMessage = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myPanelwork&text=50%20memes%20send";
 
         async function getapi(url, int, int) {
             const response = await fetch(url).then((d) => d.json());
@@ -32,14 +38,15 @@
                 await delay(3000);
 
                 let data = "";
-
-                html = `<div class="card m-5" id=${i} style="width: 18rem;">
-        <img src=${meme} class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Title: ${response["memes"][i]["title"]}</h5>
-            <p class="card-text">${send["result"]['caption']}</p>
-        </div>
-    </div>`
+                const title = (i === 0) ? `<h1>${subreddit[randomInt]}</h1>` : "";
+                html = `${title}
+                <div class="card m-5" id=${i} style="width: 18rem;">
+            <img src=${meme} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Title: ${response["memes"][i]["title"]}</h5>
+                <p class="card-text">${send["result"]['caption']}</p>
+            </div>
+        </div>`
                 data += html;
 
                 test = document.createElement('div');
@@ -55,9 +62,6 @@
             document.body.appendChild(final);
             location.reload();
         }
-
-
-
         getapi(api_url, 10, 10);
 
         function delay(milisec) {
@@ -65,6 +69,7 @@
                 setTimeout(() => { resolve('') }, milisec);
             })
         }
+
     </script>
 </body>
 
