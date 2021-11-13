@@ -42,7 +42,7 @@
                     var send = await fetch(sendUrl + meme + "&caption=memeNo" + i.toString()).then((d) => d.json());
                 }
                 catch {
-                    location.reload();
+                    continue;
                 }
                 console.log(send, i);
                 await delay(3000);
