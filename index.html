@@ -23,12 +23,9 @@
         const sendMessage = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myPanelwork&text=50%20memes%20send";
 
         async function getapi(url, int, int) {
-            try {
-                var response = await fetch(url).then((d) => d.json());
-            }
-            catch {
-                location.reload();
-            }
+
+            const response = await fetch(url).then((d) => d.json());
+
             console.log(response.count);
             const limit = response.count;
             for (i = 0; i < limit; i++) {
