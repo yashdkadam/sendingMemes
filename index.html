@@ -24,9 +24,9 @@
 
         async function getapi(url, int, int) {
             const response = await fetch(url).then((d) => d.json());
-            console.log(response);
-
-            for (i = 0; i < 50; i++) {
+            console.log(response.count);
+            const limit = response.count;
+            for (i = 0; i < limit; i++) {
                 let meme = response["memes"][i]["url"];
                 if (meme.search(".gif") !== -1) {
                     console.log("gif found");
