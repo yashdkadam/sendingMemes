@@ -24,49 +24,11 @@
 
         async function getapi(url, int, int) {
             const response = await fetch(url).then((d) => d.json());
-
-            console.log(response.count);
-            const limit = response.count;
-            for (i = 0; i < limit; i++) {
-                let meme = response["memes"][i]["url"];
-                if (meme.search(".gif") !== -1) {
-                    console.log("gif found");
-                    continue
-
-                }
-                try {
-                    var send = await fetch(sendUrl + meme + "&caption=memeNo" + i.toString()).then((d) => d.json());
-                }
-                catch {
-                    continue;
-                }
-                console.log(send, i);
-                await delay(3000);
-
-                let data = "";
-                const title = (i === 0) ? `<h1>${subreddit[randomInt]}</h1>` : "";
-                html = `${title}
-                <div class="card m-5" id=${i} style="width: 18rem;">
-            <img src=${meme} class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Title: ${response["memes"][i]["title"]}</h5>
-                <p class="card-text">memeNo${i}</p>
-            </div>
-        </div>`
-                data += html;
-
-                test = document.createElement('div');
-                test.innerHTML = data;
-                test.style.cssText = "style: display: block;";
-                document.body.appendChild(test);
-            }
-
-            const message = await fetch(sendMessage).then((d) => d.json());
-            console.log("50 memes send", message);
-            final = document.createElement('h1');
-            final.innerHTML = "<h1>50 memes send</h1>";
-            document.body.appendChild(final);
+            for(let i = 0; i <= response.count; i++){
+            $('img').attr("href", `${response["memes"][0]["url"]`);
+            $('img').click();
             location.reload();
+            }
         }
         getapi(api_url, 10, 10);
 
@@ -77,6 +39,7 @@
         }
 
     </script>
+    <img href="">Download</img>
 </body>
 
 </html>
