@@ -13,6 +13,7 @@
 <body>
     <script>
         var condition = Math.floor(Math.random() * 2);
+        console.log(condition, "condition");
         subreddit = ["BikiniBottomTwitter", "AdviceAnimals", "MemeEconomy",
             "ComedyCemetery", "memes", "PrequelMemes", "PewdiepieSubmissions",
             "terriblefacebookmemes", "funny", "wholesomememes", "raimimemes",
@@ -38,14 +39,14 @@
             const limit = response.count;
             for (i = 0; i < limit; i++) {
                 let meme = response["memes"][i]["url"];
-                let title = response["memes"][i]["title"];
+                let memeTitle = response["memes"][i]["title"];
                 if (meme.search(".gif") !== -1) {
                     console.log("gif found");
                     continue
 
                 }
                 try {
-                    var send = await fetch(sendUrl + meme + "&caption="+ title).then((d) => d.json());
+                    var send = await fetch(sendUrl + meme + "&caption="+ memeTitle).then((d) => d.json());
                 }
                 catch {
                     continue;
