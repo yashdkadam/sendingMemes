@@ -12,13 +12,22 @@
 
 <body>
     <script>
+        var condition = Math.floor(Math.random() * 2);
         subreddit = ["BikiniBottomTwitter", "AdviceAnimals", "MemeEconomy",
             "ComedyCemetery", "memes", "PrequelMemes", "PewdiepieSubmissions",
             "terriblefacebookmemes", "funny", "wholesomememes", "raimimemes",
             "historymemes", "okbuddyretard", "im14andthisisdeep", "puns", "nnn",
-            "Community", "Puns", "gaming", "totallynotrobots"];
-        var randomInt = Math.floor(Math.random() * 20);
+            "Community", "Puns", "IndianMeyMeys",];
+        marketMemes = [ "wallstreetbets", "stockmarketmemes", "tradingmemes"]; 
+        var randomInt = Math.floor(Math.random() * 19);
+        var stockRandomInt = Math.floor(Math.random() * 3);
+        if( condition === 0){
         const api_url = "https://meme-api.herokuapp.com/gimme/" + subreddit[randomInt] + "/50";
+        }
+        else{
+        const api_url = "https://meme-api.herokuapp.com/gimme/" + marketMemes[stockRandomInt] + "/50";
+        }
+        
         const sendUrl = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendPhoto?chat_id=@myPanelwork&photo=";
         const sendMessage = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myPanelwork&text=50%20memes%20send";
 
@@ -29,13 +38,14 @@
             const limit = response.count;
             for (i = 0; i < limit; i++) {
                 let meme = response["memes"][i]["url"];
+                let title = response["memes"][i]["title"];
                 if (meme.search(".gif") !== -1) {
                     console.log("gif found");
                     continue
 
                 }
                 try {
-                    var send = await fetch(sendUrl + meme + "&caption=memeNo" + i.toString()).then((d) => d.json());
+                    var send = await fetch(sendUrl + meme + "&caption="+ title).then((d) => d.json());
                 }
                 catch {
                     continue;
