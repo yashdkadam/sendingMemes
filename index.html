@@ -22,7 +22,7 @@
         marketMemes = [ "wallstreetbets", "stockmarketmemes", "tradingmemes"]; 
         var randomInt = Math.floor(Math.random() * 19);
         var stockRandomInt = Math.floor(Math.random() * 3);
-        if( ){
+        
         const api_url = (condition === 0) ? "https://meme-api.herokuapp.com/gimme/" + subreddit[randomInt] + "/50" : "https://meme-api.herokuapp.com/gimme/" + marketMemes[stockRandomInt] + "/50";
         const sendUrl = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendPhoto?chat_id=@myPanelwork&photo=";
         const sendMessage = "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myPanelwork&text=50%20memes%20send";
